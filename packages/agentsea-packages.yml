@@ -1,0 +1,404 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://registry.npmjs.org/@lov3kaizen/agentsea-* and https://hex.pm/api/packages?search=agentsea,
+  cross-checked against https://www.agentsea.dev/docs/installation/ and
+  https://github.com/lovekaizen/agentsea/releases
+note: >-
+  AgentSea publishes two first-party package families from the same project: twenty
+  TypeScript/Node packages on npm under the @lov3kaizen/agentsea-* scope (monorepo
+  github.com/lovekaizen/agentsea, released in lockstep) and fourteen native Elixir/OTP libraries on
+  Hex under agentsea_* (github.com/lovekaizen/agentsea-ex). The npm scope is @lov3kaizen (leetspeak
+  of the lovekaizen GitHub account) rather than @agentsea; the AgentSea docs and README name these
+  packages directly, which is how first-party ownership was established. packages/admin-ui exists in
+  the monorepo but is private and deliberately not published to npm - it is recorded here as an
+  honest null rather than omitted. All npm packages are on a single lockstep version line.
+package_count: 35
+official_count: 35
+published_count: 34
+unpublished_count: 1
+registries:
+- npm
+- hex
+packages:
+- name: '@lov3kaizen/agentsea-analytics'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-analytics
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/analytics
+  install: npm install @lov3kaizen/agentsea-analytics
+  description: "Conversation analytics for AI agents - intent classification, flow analysis, sentiment tracking, and insights"
+- name: '@lov3kaizen/agentsea-cache'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-cache
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/cache
+  install: npm install @lov3kaizen/agentsea-cache
+  description: "Semantic caching layer for LLM responses - exact match, semantic similarity, and hybrid strategies"
+- name: '@lov3kaizen/agentsea-cli'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-cli
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/cli
+  install: npm install @lov3kaizen/agentsea-cli
+  description: "CLI tool for AgentSea ADK - Build and orchestrate AI agents"
+- name: '@lov3kaizen/agentsea-core'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-core
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/core
+  install: npm install @lov3kaizen/agentsea-core
+  description: "AgentSea - Unite and orchestrate AI agents. A production-ready ADK for building agentic AI applications with multi-provider support."
+- name: '@lov3kaizen/agentsea-costs'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-costs
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/costs
+  install: npm install @lov3kaizen/agentsea-costs
+  description: "AI cost management platform with real-time tracking, budget enforcement, and optimization"
+- name: '@lov3kaizen/agentsea-crews'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-crews
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/crews
+  install: npm install @lov3kaizen/agentsea-crews
+  description: "Multi-agent orchestration framework for AgentSea. Build, compose, and orchestrate agent crews with role-based coordination, task delegation, and workflow automation."
+- name: '@lov3kaizen/agentsea-debugger'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-debugger
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/debugger
+  install: npm install @lov3kaizen/agentsea-debugger
+  description: "AI Agent debugger with step-through execution, decision tree visualization, checkpoint replay, and what-if scenario testing"
+- name: '@lov3kaizen/agentsea-embeddings'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-embeddings
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/embeddings
+  install: npm install @lov3kaizen/agentsea-embeddings
+  description: "Vector embedding lifecycle management toolkit for Node.js - versioning, caching, chunking, drift detection, and migration"
+- name: '@lov3kaizen/agentsea-evaluate'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-evaluate
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/evaluate
+  install: npm install @lov3kaizen/agentsea-evaluate
+  description: "Comprehensive feedback collection and LLM evaluation platform for Node.js - human-in-the-loop annotation, automated evaluation pipelines, preference dataset generation"
+- name: '@lov3kaizen/agentsea-gateway'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-gateway
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/gateway
+  install: npm install @lov3kaizen/agentsea-gateway
+  description: "High-performance TypeScript-native LLM gateway with unified API access, intelligent routing, semantic caching, and cost optimization"
+- name: '@lov3kaizen/agentsea-guardrails'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-guardrails
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/guardrails
+  install: npm install @lov3kaizen/agentsea-guardrails
+  description: "TypeScript-native guardrails engine for AI applications. Content safety, prompt injection detection, output validation, and intelligent rate limiting."
+- name: '@lov3kaizen/agentsea-ingest'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-ingest
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/ingest
+  install: npm install @lov3kaizen/agentsea-ingest
+  description: "Comprehensive document processing pipeline for Node.js - PDF, DOCX, HTML, Markdown parsing with intelligent chunking, table/image extraction, and OCR"
+- name: '@lov3kaizen/agentsea-memory'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-memory
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/memory
+  install: npm install @lov3kaizen/agentsea-memory
+  description: "Advanced memory management system for AI agents with semantic retrieval, hierarchical structures, and multi-agent support"
+- name: '@lov3kaizen/agentsea-nestjs'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-nestjs
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/nestjs
+  install: npm install @lov3kaizen/agentsea-nestjs
+  description: "NestJS integration for AgentSea - Unite and orchestrate AI agents in your NestJS applications"
+- name: '@lov3kaizen/agentsea-prompts'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-prompts
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/prompts
+  install: npm install @lov3kaizen/agentsea-prompts
+  description: "Self-hosted prompt management with Git-like version control, environment promotion, A/B testing, and team collaboration"
+- name: '@lov3kaizen/agentsea-react'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-react
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/react
+  install: npm install @lov3kaizen/agentsea-react
+  description: "React components for rendering AgentSea agent responses with formatting support"
+- name: '@lov3kaizen/agentsea-redteam'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-redteam
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/redteam
+  install: npm install @lov3kaizen/agentsea-redteam
+  description: "AI Safety & Red Teaming Toolkit for proactive security testing of AI agents"
+- name: '@lov3kaizen/agentsea-structured'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-structured
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/structured
+  install: npm install @lov3kaizen/agentsea-structured
+  description: "TypeScript-native structured output framework - Zod schema enforcement for LLM responses"
+- name: '@lov3kaizen/agentsea-surf'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-surf
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/surf
+  install: npm install @lov3kaizen/agentsea-surf
+  description: "Surf - Computer-use agent for AgentSea. Control desktop environments through screen capture, mouse, and keyboard actions using Claude's vision capabilities."
+- name: '@lov3kaizen/agentsea-types'
+  language: javascript
+  registry: npm
+  official: true
+  version: '1.2.1'
+  published: '2026-07-02'
+  url: https://www.npmjs.com/package/@lov3kaizen/agentsea-types
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/types
+  install: npm install @lov3kaizen/agentsea-types
+  description: "Type definitions for AgentSea ADK"
+- name: '@lov3kaizen/agentsea-admin-ui'
+  language: javascript
+  registry: npm
+  official: true
+  version: null
+  published: null
+  url: null
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/admin-ui
+  description: >-
+    Next.js admin UI for the AgentSea monorepo. Checked on registry.npmjs.org and absent (HTTP 404);
+    the v1.0.1 release notes state plainly "admin-ui is private and not published". Recorded as a
+    verified gap, not a guess.
+- name: agentsea_bumblebee
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_bumblebee
+  docs: https://hexdocs.pm/agentsea_bumblebee
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_bumblebee, "~> 0.1.0"}'
+  description: "AgentSea Bumblebee: in-process Hugging Face embeddings and Whisper speech-to-text via Bumblebee and Nx."
+- name: agentsea_core
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_core
+  docs: https://hexdocs.pm/agentsea_core
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_core, "~> 0.1.0"}'
+  description: "AgentSea core: the agent GenServer, the agentic run loop, and the Provider/Tool/Memory behaviours."
+- name: agentsea_crews
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_crews
+  docs: https://hexdocs.pm/agentsea_crews
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_crews, "~> 0.1.0"}'
+  description: "AgentSea crews: multi-agent coordination with delegation strategies and a gen_statem task-DAG coordinator."
+- name: agentsea_embeddings
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_embeddings
+  docs: https://hexdocs.pm/agentsea_embeddings
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_embeddings, "~> 0.1.0"}'
+  description: "AgentSea embeddings: embedder/vector-store behaviours, RAG, and in-memory/pgvector/Qdrant/Pinecone stores."
+- name: agentsea_evaluate
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_evaluate
+  docs: https://hexdocs.pm/agentsea_evaluate
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_evaluate, "~> 0.1.0"}'
+  description: "AgentSea evaluate: concurrent evaluation metrics, including an LLM-as-judge metric."
+- name: agentsea_gateway
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_gateway
+  docs: https://hexdocs.pm/agentsea_gateway
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_gateway, "~> 0.1.0"}'
+  description: "AgentSea gateway: strategy-based routing, circuit breaking, and failover across LLM providers."
+- name: agentsea_guardrails
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_guardrails
+  docs: https://hexdocs.pm/agentsea_guardrails
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_guardrails, "~> 0.1.0"}'
+  description: "AgentSea guardrails: an input/output validation pipeline with rule-based and LLM moderation guardrails."
+- name: agentsea_ingest
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_ingest
+  docs: https://hexdocs.pm/agentsea_ingest
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_ingest, "~> 0.1.0"}'
+  description: "AgentSea ingest: a Broadway document ingestion pipeline (chunk, embed, store)."
+- name: agentsea_mcp
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_mcp
+  docs: https://hexdocs.pm/agentsea_mcp
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_mcp, "~> 0.1.0"}'
+  description: "AgentSea MCP: a Model Context Protocol client with stdio and streamable-HTTP transports."
+- name: agentsea_providers
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_providers
+  docs: https://hexdocs.pm/agentsea_providers
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_providers, "~> 0.1.0"}'
+  description: "AgentSea LLM providers: Anthropic over Req, with non-streaming and real SSE streaming."
+- name: agentsea_structured
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_structured
+  docs: https://hexdocs.pm/agentsea_structured
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_structured, "~> 0.1.0"}'
+  description: "AgentSea structured output: extract validated Ecto structs from an LLM, with validation retry."
+- name: agentsea_surf
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_surf
+  docs: https://hexdocs.pm/agentsea_surf
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_surf, "~> 0.1.0"}'
+  description: "AgentSea surf: a Node/Playwright browser-automation sidecar exposed as agent tools."
+- name: agentsea_voice
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_voice
+  docs: https://hexdocs.pm/agentsea_voice
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_voice, "~> 0.1.0"}'
+  description: "AgentSea voice: text-to-speech and speech-to-text behaviours with OpenAI and ElevenLabs adapters."
+- name: agentsea_web
+  language: elixir
+  registry: hex
+  official: true
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_web
+  docs: https://hexdocs.pm/agentsea_web
+  repository: https://github.com/lovekaizen/agentsea-ex
+  install: '{:agentsea_web, "~> 0.1.0"}'
+  description: "AgentSea web: a Phoenix LiveView fleet dashboard and an OpenAI-compatible chat completions endpoint."
+currency:
+  npm_latest_version: '1.2.1'
+  npm_latest_published: '2026-07-02'
+  hex_latest_version: '0.1.0'
+  hex_latest_published: '2026-06-26'
+  note: >-
+    Both families are current relative to the project itself - npm 1.2.1 was published the same week
+    as the v1.2.1 GitHub release (2026-07-02) and the repo's last push (2026-06-30). The Elixir
+    family is a single 0.1.0 initial release from 2026-06-26 and has not been revised since; the
+    marketing site still advertises "v1.1.0 release" in its header while npm is on 1.2.1, so the
+    site banner trails the registry by two releases.
+cli:
+  package: '@lov3kaizen/agentsea-cli'
+  binary: sea
+  see: cli/agentsea-cli.yml

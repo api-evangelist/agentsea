@@ -1,0 +1,120 @@
+generated: '2026-08-24'
+method: searched
+source: https://www.agentsea.dev/docs/cli/
+docs: https://www.agentsea.dev/docs/cli/
+name: AgentSea CLI
+binary: sea
+package: '@lov3kaizen/agentsea-cli'
+version: '1.2.1'
+published: '2026-07-02'
+license: MIT
+note: >-
+  First-party interactive CLI for the AgentSea ADK, published to npm on the same lockstep version
+  line as the rest of the @lov3kaizen/agentsea-* suite. It manages local configuration, agents,
+  providers and Ollama models, and hosts the agentic coding session (`sea code`) added in v0.6.0.
+  It is a local developer tool - it does not call a vendor-operated AgentSea API.
+install:
+- method: npm
+  command: npm install -g '@lov3kaizen/agentsea-cli'
+- method: pnpm
+  command: pnpm add -g '@lov3kaizen/agentsea-cli'
+- method: yarn
+  command: yarn global add '@lov3kaizen/agentsea-cli'
+requirements:
+  node: '>=20.0.0'
+config_paths:
+  macos: ~/Library/Preferences/agentsea-cli
+  linux: ~/.config/agentsea-cli
+  windows: '%APPDATA%/agentsea-cli'
+  format: JSON (providers, agents, defaultAgent, voice)
+commands:
+- group: setup
+  command: sea init
+  description: Interactive setup wizard - choose provider, enter API key, select default model, configure voice providers, save configuration.
+- group: chat
+  command: sea chat
+  description: Interactive chat session with the default or a named agent.
+  flags:
+  - --agent <name>
+  - --voice
+  - --model <model>
+- group: coding
+  command: sea code
+  description: >-
+    Interactive agentic coding session with 13 built-in coding tools (file_read, file_write,
+    file_list, code_edit, glob, grep, shell_execute, git_status and more). Works with any
+    configured provider, cloud or local.
+  flags:
+  - --provider <provider>
+  - --model <model>
+  - --verbose
+  - --maxIterations <n>
+- group: agent
+  command: sea agent create
+  description: Create an agent with provider, model, system prompt, temperature, max tokens and optional voice STT/TTS.
+  flags:
+  - --provider
+  - --model
+  - --system-prompt
+  - --temperature
+  - --max-tokens
+  - --voice-stt
+  - --voice-tts
+- group: agent
+  command: sea agent list
+  description: List configured agents with provider, model and voice configuration.
+- group: agent
+  command: sea agent get <name>
+  description: Show a single agent's configuration.
+- group: agent
+  command: sea agent run <name> "<prompt>"
+  description: Run an agent once; supports --voice-input and --voice-output audio files.
+- group: agent
+  command: sea agent delete <name>
+  description: Delete an agent.
+- group: agent
+  command: sea agent default <name>
+  description: Set the default agent.
+- group: model
+  command: sea model pull <model>
+  description: Pull a local model (Ollama).
+- group: model
+  command: sea model list
+  description: List locally installed models with sizes.
+- group: model
+  command: sea model info <model>
+  description: Show model size, parameters, quantization, family and license.
+- group: model
+  command: sea model remove <model>
+  description: Remove a local model.
+- group: provider
+  command: sea provider add <provider> --api-key <key>
+  description: Add and configure an LLM provider.
+- group: provider
+  command: sea provider list
+  description: List configured providers with masked keys and defaults.
+- group: provider
+  command: sea provider test <provider>
+  description: Test connectivity to a configured provider.
+- group: provider
+  command: sea provider remove <provider>
+  description: Remove a provider configuration.
+- group: meta
+  command: sea --version
+  description: Print the installed CLI version.
+key_flows:
+- name: Fully local, zero-cost setup
+  steps:
+  - Install Ollama
+  - sea init (choose Ollama)
+  - sea model pull llama3.2
+  - sea chat
+- name: Voice-enabled assistant
+  steps:
+  - sea agent create voice-bot --voice-stt openai-whisper --voice-tts openai-tts
+  - sea chat --agent voice-bot --voice
+  - sea agent run voice-bot --voice-input question.mp3 --voice-output answer.mp3
+- name: Multi-agent workflow
+  steps:
+  - sea agent create researcher / writer / coder with different models
+  - sea agent run <name> "<task>"

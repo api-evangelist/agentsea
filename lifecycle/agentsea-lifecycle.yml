@@ -1,0 +1,59 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://github.com/lovekaizen/agentsea/releases, https://www.agentsea.dev/docs/installation/,
+  https://registry.npmjs.org/@lov3kaizen/agentsea-core, and probes of
+  https://www.agentsea.dev/status (404)
+note: >-
+  AgentSea is self-hosted open-source software with no vendor-operated service, so most of the
+  service-lifecycle surface simply does not apply: there is nothing for AgentSea to keep up, so
+  there is no status page and no SLA, and no customer of AgentSea can be affected by a
+  vendor-side outage.
+versioning:
+  scheme: semver
+  policy_published: false
+  release_style: lockstep monorepo - all @lov3kaizen/agentsea-* packages share one version line
+  current_version: '1.2.1'
+  current_version_date: '2026-07-02'
+  release_count: 15
+  first_release: '2025-12-03'
+  cadence: >-
+    Bursty. 8 releases between 2025-12-03 and 2026-01-04, then a gap to 2026-02-10 (v0.6.0), then
+    six releases between 2026-06-16 and 2026-07-02 taking the project from 0.8.0 to 1.2.1. Nothing
+    published since 2026-07-02; last repo push 2026-06-30.
+  see: changelog/agentsea-changelog.yml
+support_policy:
+  runtime: Node.js >= 20.0.0 on every package as of v1.0.1 (Node 18 dropped; EOL Node 18 removed from CI)
+  ci_matrix: Node 20 and 22 on ubuntu, windows and macOS
+  source: https://github.com/lovekaizen/agentsea/releases/tag/v1.0.1
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation policy, no RFC 8594 Sunset/Deprecation header contract, and no published
+    end-of-life schedule. Breaking changes are announced only in release notes - the Node >=20
+    engine change in v1.0.1 is the one breaking change in the project's history and was shipped as
+    a patch bump. No Deprecation pointer is emitted in apis.yml.
+status_page:
+  published: false
+  probed:
+  - url: https://www.agentsea.dev/status
+    status: 404
+  note: >-
+    No status page exists and none is needed - AgentSea operates no service. No StatusPage pointer
+    is emitted in apis.yml.
+sla:
+  published: false
+  note: MIT licence, provided "as is". No SLA, no support commitment.
+maturity:
+  stability: >-
+    v1.1.0 (2026-06-25) is described by the maintainer as the maturity release that graduated every
+    Beta/WIP package to Stable.
+  work_in_progress: >-
+    The GitHub README carries a "Work in Progress" section; packages/admin-ui remains private and
+    unpublished.
+  bus_factor: >-
+    Single maintainer (Michael Fatoki-Bello / lovekaizen). 22 GitHub stars, 2 open issues, and the
+    repository has GitHub Discussions disabled (the site links to /discussions, which 404s).
+  governance: MIT licence; CONTRIBUTING.md is linked from the README but is not present in the repo (404).

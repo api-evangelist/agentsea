@@ -1,0 +1,53 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/docs/react-hooks/ and
+  https://github.com/lovekaizen/agentsea/tree/main/packages/react/src
+note: >-
+  AgentSea's client-side surface is a React library plus two dashboards. These are NOT hosted or
+  embeddable vendor widgets - there is no script tag or CDN loader, and nothing is served from an
+  AgentSea domain. Everything here installs from npm/Hex and runs inside the consumer's own
+  application, which is the honest shape for a self-hosted framework.
+distribution: npm and hex packages only - no CDN loader, no hosted iframe, no script-tag embed
+families:
+- name: React
+  package: '@lov3kaizen/agentsea-react'
+  version: '1.2.1'
+  published: '2026-07-02'
+  docs: https://www.agentsea.dev/docs/react-hooks/
+  install: npm install '@lov3kaizen/agentsea-react'
+  description: >-
+    React hooks and rendering components for AI chat interfaces with streaming, tool-approval
+    workflows and thinking-token visualization.
+  hooks:
+  - name: useChat
+    description: Full-featured chat hook - message management, streaming, tool approval, thinking tokens. Configured with an endpoint and agentId.
+  - name: useAgent
+    description: Single-shot agent execution for one-off tasks and background operations; exposes execute() and executeStream().
+  - name: useFormattedContent
+    description: Format agent responses with Markdown rendering and code highlighting.
+  - name: useStreamingContent
+    description: Optimized streaming content handling with cursor animation.
+  components:
+  - name: AgentResponse
+    source: packages/react/src/AgentResponse.tsx
+    description: Renders a formatted agent response (markdown/code/HTML output of the ContentFormatter).
+  - name: StreamingResponse
+    source: packages/react/src/StreamingResponse.tsx
+    description: Renders a streaming agent response as chunks arrive.
+- name: Admin UI
+  package: packages/admin-ui
+  published: false
+  repository: https://github.com/lovekaizen/agentsea/tree/main/packages/admin-ui
+  description: >-
+    Next.js admin dashboard for managing agents (list/create screens under app/agents). Present in
+    the monorepo but explicitly private and not published to npm per the v1.0.1 release notes.
+- name: Phoenix LiveView dashboard
+  package: agentsea_web
+  registry: hex
+  version: '0.1.0'
+  published: '2026-06-26'
+  url: https://hex.pm/packages/agentsea_web
+  description: >-
+    Elixir/OTP fleet dashboard rendered with Phoenix LiveView (AgentSea.Web.DashboardLive), served
+    at "/" alongside the OpenAI-compatible POST /v1/chat/completions endpoint. Self-hosted.

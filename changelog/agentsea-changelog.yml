@@ -1,0 +1,105 @@
+generated: '2026-08-24'
+method: searched
+source: https://github.com/lovekaizen/agentsea/releases
+docs: https://github.com/lovekaizen/agentsea/releases
+note: >-
+  AgentSea publishes no changelog page on agentsea.dev (/changelog returns 404). The dated change
+  record lives in two places: GitHub Releases on lovekaizen/agentsea (15 releases, tagged and dated)
+  and per-package CHANGELOG.md files inside the monorepo (packages/<name>/CHANGELOG.md, Changesets
+  format). The Elixir libraries carry their own CHANGELOG.md files in lovekaizen/agentsea-ex.
+scheme: semver
+release_style: lockstep monorepo - every @lov3kaizen/agentsea-* package ships the same version
+current_version: '1.2.1'
+current_version_date: '2026-07-02'
+site_advertised_version: '1.1.0'
+site_version_note: >-
+  The agentsea.dev header still advertises "v1.1.0 release" while npm and GitHub Releases are on
+  1.2.1 - the marketing site trails the registry by two releases as of 2026-08-24.
+per_package_changelogs: https://github.com/lovekaizen/agentsea/blob/main/packages/core/CHANGELOG.md
+release_count: 15
+first_release: '2025-12-03'
+entries:
+- version: v1.2.1
+  date: '2026-07-02'
+  breaking: false
+  highlights:
+  - Docs refresh - README and guides updated to latest models; Nango/Composio integrations explored.
+  - 'fix(types,costs): model registries reconciled between packages.'
+  - 'test(surf): browser smoke teardown no longer hangs CI.'
+- version: v1.2.0
+  date: '2026-06-30'
+  breaking: false
+  highlights:
+  - CVE remediation plus security and correctness hardening across all packages.
+- version: v1.1.1
+  date: '2026-06-30'
+  breaking: false
+  highlights:
+  - crews ships type declarations and adds opt-in concurrent task execution via maxConcurrentTasks (default 1, sequential).
+  - crews/embeddings/evaluate/memory bundle ESM-only nanoid so CJS builds work on Node <20.19 / <22.12.
+  - memory - broken exports map fixed; importance-scoring helpers no longer return Promises/NaN.
+  - Release tooling - scripts/release-version.mjs (pnpm version-lockstep) for deterministic lockstep versioning.
+- version: v1.1.0
+  date: '2026-06-25'
+  breaking: false
+  highlights:
+  - Maturity release - every Beta/WIP package graduated to Stable; backwards compatible.
+  - Crews - real LLM execution by default via CoreExecutor (mock now opt-in).
+  - Evaluate - real SMTP / PagerDuty Events API v2 / webhook alert channels; HuggingFace dataset import and Hub export.
+  - Red Team - hash-chained FileAuditStore, cron-driven schedules, real alert delivery (webhook/Slack/Teams/Discord/PagerDuty/email).
+  - Embeddings - pgvector / Weaviate / Milvus stores and local ONNX models via Transformers.js.
+  - Surf - Playwright backend (chromium/firefox/webkit) plus Kubernetes (kubectl exec) and VNC/RDP remote-display backends.
+- version: v1.0.1
+  date: '2026-06-16'
+  breaking: true
+  breaking_note: >-
+    engines.node raised to >=20.0.0 on every package (previously >=18 or unset). Installs on
+    Node <20 now warn.
+  highlights:
+  - Patch release across the whole suite; 20 packages published at 1.0.1. admin-ui remains private.
+- version: v1.0.0
+  date: '2026-06-16'
+  breaking: false
+  highlights:
+  - First stable release; the whole monorepo unified on a single 1.0.0 version line.
+  - 20 packages published to npm - analytics, cache, cli, core, costs, crews, debugger, embeddings, evaluate, gateway, guardrails, ingest, memory, nestjs, prompts, react, redteam, structured, surf, types.
+- version: v0.8.0
+  date: '2026-06-16'
+  breaking: false
+  highlights:
+  - Security - NestJS 10 to 11; pnpm audit down from 168 known vulnerabilities to zero.
+  - Peer ranges in crews/costs/guardrails/surf widened to ^10 || ^11.
+  - CI - Windows native builds fixed; EOL Node 18 dropped; green on Node 20/22 across ubuntu/windows/macos.
+- version: v0.6.0
+  date: '2026-02-10'
+  breaking: false
+  highlights:
+  - Agentic coding - new `sea code` interactive coding assistant in the CLI with 13 built-in tools.
+  - Model support expanded across 6 providers; 3 new provider integrations.
+- version: v0.5.2
+  date: '2026-01-04'
+  breaking: false
+- version: v0.5.1
+  date: '2026-01-04'
+  breaking: false
+- version: v0.5.0
+  date: '2026-01-04'
+  breaking: false
+- version: v0.4.0
+  date: '2025-12-08'
+  breaking: false
+  highlights:
+  - Per-model type safety; new useChat and useAgent React hooks.
+- version: v0.3.1
+  date: '2025-12-07'
+  breaking: false
+  highlights:
+  - LemonFox STT/TTS support; OpenAI provider extended with custom baseUrl.
+- version: v0.2.0
+  date: '2025-12-04'
+  breaking: false
+- version: v0.1.1
+  date: '2025-12-03'
+  breaking: false
+  highlights:
+  - Initial release - agent framework, tool system with Zod validation, MCP integration, memory, multi-tenancy, workflows, Figma/n8n tools.

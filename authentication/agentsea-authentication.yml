@@ -1,0 +1,68 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/docs/multi-tenancy/, https://www.agentsea.dev/api/,
+  https://www.agentsea.dev/docs/gateway/, https://www.agentsea.dev/docs/cli/
+docs: https://www.agentsea.dev/docs/multi-tenancy/
+note: >-
+  AgentSea has no vendor-operated API and therefore issues no credentials of its own. There is no
+  signup, no console, and no account. Authentication in AgentSea is a capability the framework
+  gives the SELF-HOSTER: a multi-tenancy layer that mints and verifies scoped, SHA256-hashed API
+  keys for the tenants of an application you run. Separately, the framework consumes third-party
+  LLM/tool provider credentials (Anthropic, OpenAI, Google, Figma, n8n, ...) read from environment
+  variables. This artifact was derived from the published documentation, not from an OpenAPI - no
+  machine-readable spec with securitySchemes is published.
+vendor_credentials: none
+account_required: false
+schemes:
+- id: tenant-api-key
+  type: apiKey
+  in: unspecified
+  applies_to: applications built on the AgentSea NestJS/REST surface
+  issued_by: the self-hoster, via TenantManager.generateApiKey()
+  storage: SHA256-hashed at rest; plaintext returned once at generation and never shown again
+  verification: TenantManager.verifyApiKey(key) resolves the key to a tenantId
+  expiry: per-key expiresAt is supported (docs example sets a 1-year expiry)
+  scoped: true
+  scopes:
+  - agents:read
+  - agents:write
+  - conversations:read
+  scopes_note: >-
+    These three are the scopes shown in the published multi-tenancy example. The scope vocabulary is
+    application-defined - AgentSea does not publish a closed scope reference, so no scopes/ artifact
+    is emitted. This is API-key scoping, not OAuth: no oauth2 flow, no authorization server, no
+    /.well-known/oauth-authorization-server (probed, 404).
+  docs: https://www.agentsea.dev/docs/multi-tenancy/
+- id: provider-credentials
+  type: apiKey
+  in: environment variable
+  applies_to: outbound calls the framework makes to LLM, voice and tool providers
+  examples:
+  - ANTHROPIC_API_KEY
+  - OPENAI_API_KEY
+  - FIGMA_ACCESS_TOKEN
+  - N8N_API_KEY
+  - GITHUB_TOKEN (when wiring the official MCP GitHub server)
+  note: >-
+    These are the consumer's own credentials with third parties. AgentSea never brokers or proxies
+    them; the CLI stores them in the OS config directory (~/Library/Preferences/agentsea-cli,
+    ~/.config/agentsea-cli, %APPDATA%/agentsea-cli).
+  docs: https://www.agentsea.dev/docs/providers/
+unauthenticated_by_default: >-
+  The documented /agents REST endpoints and the OpenAI-compatible POST /v1/chat/completions gateway
+  endpoint ship with no authentication of their own. The NestJS guide's production checklist tells
+  the operator to "implement authentication and authorization guards" - auth is the deployer's
+  responsibility, not a built-in default.
+tenant_model:
+  isolation: complete data separation between tenants; tenant-scoped conversation history and memory stores
+  statuses:
+  - ACTIVE
+  - SUSPENDED
+  - INACTIVE
+  settings:
+  - maxAgents
+  - maxConversations
+  - rateLimit
+  - dataRetentionDays
+  - allowedProviders

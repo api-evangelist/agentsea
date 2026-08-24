@@ -1,0 +1,118 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/api/, https://www.agentsea.dev/docs/gateway/,
+  https://www.agentsea.dev/docs/nestjs/, https://www.agentsea.dev/docs/multi-tenancy/,
+  https://www.agentsea.dev/docs/guardrails/, https://www.agentsea.dev/docs/observability/,
+  https://github.com/lovekaizen/agentsea-ex/blob/main/apps/agentsea_web/lib/agent_sea/web/router.ex
+note: >-
+  Cross-cutting runtime semantics for AgentSea's two HTTP surfaces. Both are self-hosted: the
+  /agents REST + SSE + WebSocket API from @lov3kaizen/agentsea-nestjs and the OpenAI-compatible
+  POST /v1/chat/completions gateway from @lov3kaizen/agentsea-gateway (mirrored in Elixir by
+  agentsea_web). Derived from the published documentation and the open-source router; no OpenAPI is
+  published, so nothing here is derived from a spec.
+surfaces:
+- name: Agent REST API
+  transport: HTTP + Server-Sent Events + Socket.IO
+  base: self-hosted (docs examples use http://localhost:3000)
+  operations:
+  - GET /agents
+  - GET /agents/:name
+  - POST /agents/:name/execute
+  - POST /agents/:name/stream
+  - DELETE /agents/:name/conversations/:id
+  websocket:
+    namespace: /agents
+    client_events: [execute, getAgent, listAgents]
+    server_events: [stream, agentInfo, agentList]
+- name: LLM Gateway
+  transport: HTTP
+  base: self-hosted (docs examples use http://localhost:3000)
+  operations:
+  - POST /v1/chat/completions
+  compatibility: OpenAI Chat Completions - usable with any OpenAI SDK
+auth_style:
+  description: >-
+    No auth by default on either surface. Scoped, SHA256-hashed tenant API keys are available via
+    the multi-tenancy layer; the operator wires the guard.
+  see: authentication/agentsea-authentication.yml
+pagination:
+  supported: false
+  note: >-
+    No pagination is documented on any endpoint. GET /agents returns the full registered-agent list;
+    it is a process-local registry, not a paged collection.
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No Idempotency-Key header, no request-deduplication window and no replay semantics are
+    documented on either HTTP surface. POST /agents/:name/execute and POST /v1/chat/completions are
+    both non-idempotent - retrying re-runs the agent and re-bills the upstream LLM provider. The
+    nearest adjacent features are the semantic response cache (@lov3kaizen/agentsea-cache, which
+    can return a cached completion for an identical or similar prompt) and the gateway's circuit
+    breaker with automatic retry/failover, but neither is offered as an idempotency guarantee and
+    neither is keyed by a client-supplied token. No Idempotency pointer is emitted in apis.yml,
+    because emitting one would assert a guarantee the provider does not make.
+  cache_adjacent:
+    package: '@lov3kaizen/agentsea-cache'
+    strategies: [exact-match, semantic-similarity, hybrid, streaming-replay]
+    docs: https://www.agentsea.dev/docs/cache/
+versioning:
+  api: >-
+    The gateway path is versioned (/v1/chat/completions) to mirror the OpenAI contract. The /agents
+    REST surface is unversioned.
+  library: semver, lockstep across every @lov3kaizen/agentsea-* package
+  current: '1.2.1'
+  see: changelog/agentsea-changelog.yml
+error_envelope:
+  documented: false
+  note: >-
+    No error catalogue, no problem+json (RFC 9457) envelope and no error-code registry is published
+    for the HTTP surfaces. At the library level, errors surface as thrown exceptions; the MCP tool
+    layer retries up to 3 times with exponential backoff (initial 1000ms, max 10000ms) and throws
+    after retries are exhausted. Guardrails return a GuardResult with a failureMode of fail-fast /
+    fail-safe / collect-all and a default action of allow / block / warn. No errors/ artifact is
+    emitted because there is nothing published to catalogue.
+rate_limit_signaling:
+  headers: none documented
+  note: >-
+    Per-tenant rateLimit (requests per minute) and quota tracking (recordQuotaUsage over hourly and
+    daily periods for api_calls and tokens) exist as framework primitives the operator configures.
+    No response headers, no 429 semantics and no Retry-After behaviour are documented.
+  see: rate-limits/agentsea-rate-limits.yml
+request_tracing:
+  documented: partial
+  note: >-
+    Observability is provided through logging and metrics rather than a request-id header contract.
+    The gateway exposes getMetrics() (requests, costs, latency) and checkHealth(); the Elixir side
+    ships AgentSea.Telemetry and a Phoenix telemetry bridge. No X-Request-Id convention is published.
+streaming:
+  sse:
+    endpoint: POST /agents/:name/stream
+    accept: text/event-stream
+    event_types: [iteration, content, tool_calls, tool_result, done, error]
+  websocket:
+    library: Socket.IO
+    namespace: /agents
+  gateway: SSE streaming for chat completions (Elixir provider implements real SSE)
+reversibility:
+  grade: na
+  applies: false
+  note: >-
+    AgentSea publishes no vendor-operated write surface, so there is no vendor-side state to
+    reverse. The only documented destructive operation on the self-hosted REST API is
+    DELETE /agents/:name/conversations/:id, which clears conversation history; the docs state no
+    undo, no restore endpoint and no retention window for it, and no reversal operation exists
+    anywhere in the published surface. Adjacent-but-different capabilities the docs DO state:
+    @lov3kaizen/agentsea-debugger supports checkpoint replay and what-if re-execution of an agent
+    run (a rehearsal/inspection facility, not a reversal of an effect that already landed), and
+    @lov3kaizen/agentsea-prompts offers Git-like version control over prompts with environment
+    promotion (versioning of configuration, not of transactions). Tenants have a dataRetentionDays
+    setting, but it is a value the operator sets, not a window AgentSea states. NO WINDOW IS
+    ASSERTED HERE because the provider states none.
+  reversal_operations: []
+dry_run_mode:
+  supported: na
+  note: >-
+    No vendor API, so no dry-run/preview mode to document. The debugger's what-if testing and the
+    evaluate package's offline evaluation pipeline are the framework's rehearsal facilities.

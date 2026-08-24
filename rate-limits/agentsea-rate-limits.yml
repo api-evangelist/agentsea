@@ -1,0 +1,59 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/docs/multi-tenancy/, https://www.agentsea.dev/docs/guardrails/,
+  https://www.agentsea.dev/api/
+limit_count: 0
+note: >-
+  AgentSea publishes no rate limits because it operates no API - both HTTP surfaces run inside the
+  consumer's own deployment, so there is no vendor-side quota to state and no 429 to document. That
+  is an honest zero, not an omission.
+  What the framework does provide is rate limiting as a CAPABILITY the self-hoster configures:
+  a per-tenant rateLimit setting (requests per minute) on TenantSettings, quota recording via
+  TenantManager.recordQuotaUsage() for the api_calls and tokens resources over hourly and daily
+  periods, and TokenBudgetGuard (maxTokensPerRequest) / CostGuard (maxCostPerRequest) in the
+  guardrails engine. None of these define a response-header contract.
+response_headers:
+  documented: false
+  x_ratelimit: false
+  ratelimit: false
+  retry_after: false
+  note: >-
+    No X-RateLimit-*, no RFC 9238-style RateLimit-* and no Retry-After behaviour is documented on
+    either surface, and no status code is named for exhaustion. An agent calling a self-hosted
+    AgentSea deployment gets no runtime rate-limit signal from the framework itself.
+exhaustion_status: null
+limits: []
+operator_configurable:
+- name: tenant rateLimit
+  scope: per-tenant
+  window: minute
+  unit: requests
+  value: operator-defined
+  docs: https://www.agentsea.dev/docs/multi-tenancy/
+- name: quota - api_calls
+  scope: per-tenant
+  window: [hourly, daily]
+  unit: calls
+  value: operator-defined
+  docs: https://www.agentsea.dev/docs/multi-tenancy/
+- name: quota - tokens
+  scope: per-tenant
+  window: [hourly, daily]
+  unit: tokens
+  value: operator-defined
+  docs: https://www.agentsea.dev/docs/multi-tenancy/
+- name: TokenBudgetGuard
+  scope: per-request
+  unit: tokens
+  value: maxTokensPerRequest, operator-defined
+  docs: https://www.agentsea.dev/docs/guardrails/
+- name: CostGuard
+  scope: per-request
+  unit: currency
+  value: maxCostPerRequest, operator-defined
+  docs: https://www.agentsea.dev/docs/guardrails/
+upstream_note: >-
+  The rate limits that actually bind an AgentSea deployment are the ones its configured LLM
+  providers impose (Anthropic, OpenAI, Google and so on). The gateway's circuit breaker, failover
+  and retry logic exist to absorb them.

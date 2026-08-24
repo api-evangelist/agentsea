@@ -1,0 +1,23 @@
+generated: '2026-08-24'
+method: probed
+source: https://www.agentsea.dev/pricing (HTTP 404) and https://agentsea.dev (homepage, no pricing nav)
+plan_count: 0
+pricing_model: free-open-source
+license: MIT
+note: >-
+  AgentSea sells nothing. It is MIT-licensed open-source software distributed through npm and Hex;
+  there is no pricing page (https://www.agentsea.dev/pricing returns 404), no plans, no signup, no
+  billing, and no vendor-operated service to meter. The site footer asks for "Contributors,
+  Sponsors and Enquiries" rather than customers. This is plan_count: 0 as an honest zero, not a
+  gap - there is nothing for the provider to publish.
+  Cost is a first-class concern in the PRODUCT rather than in the business model:
+  @lov3kaizen/agentsea-costs ships a 60+ model pricing registry with budget enforcement and Stripe
+  billing hooks so that the SELF-HOSTER can bill their own users, and the gateway routes on a
+  "cheapest" virtual model. Those are the consumer's economics with their LLM providers, not
+  AgentSea's price list.
+probed:
+- url: https://www.agentsea.dev/pricing
+  status: 404
+- url: https://www.agentsea.dev/docs/costs/
+  status: 200
+plans: []

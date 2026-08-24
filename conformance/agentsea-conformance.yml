@@ -1,0 +1,102 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/docs/mcp-overview/, https://www.agentsea.dev/docs/mcp-servers/,
+  https://www.agentsea.dev/docs/mcp-tools/, https://www.agentsea.dev/docs/acp-integration/,
+  https://www.agentsea.dev/docs/gateway/, https://www.agentsea.dev/api/,
+  https://hex.pm/packages/agentsea_mcp
+note: >-
+  AgentSea's conformance posture is that of a CLIENT and an ADAPTER, not a server. It speaks MCP to
+  other people's servers, speaks the Agentic Commerce Protocol to merchants' endpoints, and
+  re-implements OpenAI's Chat Completions contract so that OpenAI SDKs can talk to it. Recording
+  the direction matters: an MCP client is not an MCP server, and only the latter is an agent
+  surface a third party can call.
+standards:
+- id: model-context-protocol
+  name: Model Context Protocol
+  conforms: true
+  role: client
+  evidence: >-
+    First-class MCP client with a server registry (mcpRegistry.addServer) supporting stdio
+    transport, documented against the official Anthropic servers (filesystem, github, postgres,
+    slack, puppeteer, gdrive). The Elixir library agentsea_mcp is described on Hex as "a Model
+    Context Protocol client with stdio and streamable-HTTP transports". AgentSea publishes no MCP
+    server of its own - see mcp/agentsea-mcp.yml.
+  docs: https://www.agentsea.dev/docs/mcp-overview/
+- id: agentic-commerce-protocol
+  name: Agentic Commerce Protocol (ACP)
+  conforms: true
+  role: client
+  evidence: >-
+    ACPClient plus createACPTools() in @lov3kaizen/agentsea-core give an agent 14 commerce tools -
+    product search/browse/details/recommendations, cart add/update/remove/view, checkout
+    initiate/validate/complete, order track/history/details - against a merchant-supplied ACP
+    baseUrl with an apiKey and merchantId. Payment is delegated to Stripe/PayPal. AgentSea is the
+    buyer-side client; it does not serve an ACP endpoint.
+  docs: https://www.agentsea.dev/docs/acp-integration/
+- id: openai-chat-completions
+  name: OpenAI Chat Completions API compatibility
+  conforms: true
+  role: server (self-hosted)
+  evidence: >-
+    @lov3kaizen/agentsea-gateway serves POST /v1/chat/completions and is documented as usable with
+    any OpenAI SDK; the Elixir agentsea_web Phoenix router declares the same route
+    (scope "/v1" ... post "/chat/completions", ChatController, :create). Virtual model aliases
+    "best", "cheapest" and "fastest" are AgentSea extensions on top of the OpenAI request shape.
+  docs: https://www.agentsea.dev/docs/gateway/
+- id: sse
+  name: Server-Sent Events (HTML Living Standard / text-event-stream)
+  conforms: true
+  role: server (self-hosted)
+  evidence: >-
+    POST /agents/:name/stream streams with Accept text/event-stream; documented event types are
+    iteration, content, tool_calls, tool_result, done and error. The Elixir provider implements
+    real SSE streaming against Anthropic.
+  docs: https://www.agentsea.dev/api/
+- id: json-schema
+  name: JSON Schema (via Zod)
+  conforms: true
+  role: internal
+  evidence: >-
+    Tool definitions carry an inputSchema expressed as a Zod schema; @lov3kaizen/agentsea-structured
+    enforces JSON Schema / Zod validation on structured outputs with automatic retries, and
+    SchemaGuard validates output against a Zod schema.
+  docs: https://www.agentsea.dev/docs/structured-output/
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No OAuth anywhere. /.well-known/oauth-authorization-server and
+    /.well-known/oauth-protected-resource both return 404 on agentsea.dev and www.agentsea.dev.
+    Tenant auth is a scoped, SHA256-hashed API key minted by the self-hoster.
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: No problem+json envelope or error catalogue is published for either HTTP surface.
+- id: a2a
+  name: A2A (Agent2Agent) Agent Card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json probed on both agentsea.dev and
+    www.agentsea.dev on 2026-08-24 - all four returned HTTP 404.
+domain_standard:
+  market: agent development kits / agentic AI frameworks
+  declared: partial
+  detail: >-
+    The agent-framework market has no single ratified interoperability standard, and the checks that
+    exist in the rubric read a served contract rather than a prose claim. AgentSea's strongest
+    contract-level signature is the OpenAI Chat Completions shape on /v1/chat/completions, which is
+    visible in open source in the Elixir router and in the gateway docs. MCP and ACP are real and
+    substantial, but AgentSea sits on the client side of both, so they are recorded as role: client
+    rather than as a served surface. REWARD-ONLY: nothing is asserted here that the published code
+    or docs do not state.
+compliance:
+  certifications: []
+  programs: []
+  note: >-
+    No SOC 2, ISO 27001, PCI, HIPAA or FedRAMP claim; no trust center; no security.txt; no
+    SECURITY.md in the repository (probed 2026-08-24, HTTP 404). No Compliance pointer is emitted
+    in apis.yml. The nearest published security artefacts are in-product, not organizational: the
+    guardrails package (PII detection, prompt-injection, jailbreak and data-leakage guards), the
+    redteam package with hash-chained audit storage, and the v0.8.0/v1.2.0 release notes recording
+    CVE remediation and a pnpm audit going from 168 known vulnerabilities to zero.

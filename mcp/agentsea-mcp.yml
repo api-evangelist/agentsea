@@ -1,0 +1,81 @@
+generated: '2026-08-24'
+method: searched
+source: >-
+  https://www.agentsea.dev/docs/mcp-overview/, https://www.agentsea.dev/docs/mcp-servers/,
+  https://www.agentsea.dev/docs/mcp-tools/, https://hex.pm/packages/agentsea_mcp,
+  and probes of https://agentsea.dev/.well-known/mcp.json (404) and
+  https://www.agentsea.dev/.well-known/mcp.json (404)
+status: no-server-published
+role: mcp-client
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: searched
+note: >-
+  AgentSea ships NO MCP server. It is an MCP client: agents register other people's servers through
+  mcpRegistry.addServer({ command, args, transport: 'stdio' }), and the documented examples are
+  Anthropic's official servers (filesystem, github, postgres, slack, puppeteer, gdrive). The Elixir
+  library agentsea_mcp is described on Hex as "a Model Context Protocol client with stdio and
+  streamable-HTTP transports". There is therefore no endpoint an agent can POST tools/list to, no
+  npx package that stands up an AgentSea server, and no .well-known/mcp.json (probed, 404 on both
+  hosts). NO MCPServer POINTER IS EMITTED IN apis.yml - emitting one would credit AgentSea with an
+  agent surface it does not serve, which is the opposite of what the data should say. Nor is a
+  candidate tool list derived: there is no OpenAPI to derive one from, and inventing an endpoint
+  would be worse than recording the absence.
+client_capabilities:
+  registry: mcpRegistry.addServer()
+  transports:
+  - stdio
+  - streamable-http (Elixir agentsea_mcp)
+  custom_servers: documented - consumers can write their own MCP servers for AgentSea to consume
+  docs: https://www.agentsea.dev/docs/mcp-overview/
+built_in_tools:
+  note: >-
+    AgentSea ships pre-built MCP-style tool integrations in @lov3kaizen/agentsea-core. These are
+    tools the framework CALLS, not tools it exposes. Retry policy is 3 attempts with exponential
+    backoff (initial 1000ms, max 10000ms).
+  figma:
+    env: FIGMA_ACCESS_TOKEN
+    tools:
+    - name: figma_get_file
+      description: Get file info and structure
+      parameters: [fileKey, 'version?', 'depth?']
+    - name: figma_get_nodes
+      description: Get specific nodes by ID
+      parameters: [fileKey, nodeIds]
+    - name: figma_get_images
+      description: Export images
+      parameters: [fileKey, nodeIds, 'format?', 'scale?']
+    - name: figma_get_comments
+      description: Get all comments
+      parameters: [fileKey]
+    - name: figma_post_comment
+      description: Post a new comment
+      parameters: [fileKey, message, 'clientMeta?']
+  n8n:
+    env: [N8N_API_KEY, N8N_BASE_URL]
+    tools:
+    - name: n8n_execute_workflow
+      description: Run a workflow
+      parameters: [workflowId, 'data?', 'waitForCompletion?']
+    - name: n8n_get_execution
+      description: Check execution status
+      parameters: [executionId]
+    - name: n8n_list_workflows
+      description: List available workflows
+      parameters: ['active?', 'tags?', 'limit?']
+    - name: n8n_trigger_webhook
+      description: Trigger a webhook
+      parameters: [webhookPath, 'method?', 'data?']
+    - name: n8n_get_workflow
+      description: Get workflow details
+      parameters: [workflowId]
+  docs: https://www.agentsea.dev/docs/mcp-tools/
+probes:
+- url: https://agentsea.dev/.well-known/mcp.json
+  status: 404
+- url: https://www.agentsea.dev/.well-known/mcp.json
+  status: 404

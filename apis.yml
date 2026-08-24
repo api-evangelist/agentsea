@@ -1,23 +1,131 @@
 aid: agentsea
 name: AgentSea
-description: 'AgentSea is a company surfaced via the API Evangelist harvest backlog (source: manual) and
-  added to the network as a stub for full-pipeline profiling.'
+description: >-
+  AgentSea is an open-source agent development kit (ADK) for building agentic AI applications,
+  authored by Michael Fatoki-Bello and published under the lovekaizen GitHub account. It ships as
+  twenty TypeScript/Node packages on npm under the @lov3kaizen/agentsea-* scope and, separately,
+  as fourteen native Elixir/OTP libraries on Hex (agentsea_*). The framework covers multi-provider
+  LLM access, agent and crew orchestration, sequential/parallel workflows, memory, embeddings,
+  guardrails, evaluation, red-teaming, cost tracking, semantic caching, document ingest, prompt
+  management, browser and computer use, and voice (TTS/STT), plus a Model Context Protocol client
+  and Agentic Commerce Protocol tooling. AgentSea is self-hosted software rather than a
+  vendor-operated API - its HTTP surface (an /agents REST + Server-Sent Events + WebSocket API via
+  the NestJS module, and an OpenAI-compatible /v1/chat/completions LLM gateway) runs inside the
+  consumer's own deployment. MIT licensed.
+image: https://agentsea.dev/opengraph-image
 url: https://raw.githubusercontent.com/api-evangelist/agentsea/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:manual
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-24'
 modified: '2026-08-24'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- AI Agents
+- Agent Orchestration
+- Large Language Models
+- Model Context Protocol
+- Agentic Commerce
+- Open Source
+- Developer Tools
+- SDKs
+- TypeScript
+- Elixir
+- Voice
+apis:
+- aid: agentsea:agent-rest-api
+  name: AgentSea Agent REST API
+  description: >-
+    HTTP surface exposed by the AgentSea NestJS module (@lov3kaizen/agentsea-nestjs) when
+    enableRestApi/enableWebSocket are set. Documented operations are GET /agents,
+    GET /agents/:name, POST /agents/:name/execute, POST /agents/:name/stream (Server-Sent
+    Events), and DELETE /agents/:name/conversations/:id, plus a Socket.IO gateway on the
+    /agents namespace with execute / getAgent / listAgents events. Self-hosted: the host is the
+    consumer's own deployment, so the base is templated rather than vendor-operated.
+  humanURL: https://www.agentsea.dev/api/
+  baseURL: https://{your-agentsea-host}
+  tags:
+  - AI Agents
+  - Agent Orchestration
+  - Server-Sent Events
+  - WebSockets
+  properties:
+  - type: APIReference
+    url: https://www.agentsea.dev/api/
+  - type: Documentation
+    url: https://www.agentsea.dev/docs/nestjs/
+- aid: agentsea:llm-gateway
+  name: AgentSea LLM Gateway
+  description: >-
+    OpenAI-compatible HTTP gateway shipped as @lov3kaizen/agentsea-gateway (and as the Elixir
+    agentsea_web Phoenix app). Run createHTTPServer/startServer and POST /v1/chat/completions with
+    any OpenAI SDK; virtual models "best", "cheapest" and "fastest" route across configured
+    providers with load balancing, failover, circuit breaking, caching and cost optimization.
+    Self-hosted: the base URL is the consumer's own deployment.
+  humanURL: https://www.agentsea.dev/docs/gateway/
+  baseURL: https://{your-agentsea-gateway-host}/v1
+  tags:
+  - Large Language Models
+  - Gateway
+  - Routing
+  properties:
+  - type: Documentation
+    url: https://www.agentsea.dev/docs/gateway/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/agentsea-domain-security.yml
 - type: Website
   url: https://agentsea.dev
+- type: DeveloperPortal
+  url: https://www.agentsea.dev/docs/
+- type: Documentation
+  url: https://www.agentsea.dev/docs/
+- type: APIReference
+  url: https://www.agentsea.dev/api/
+- type: GettingStarted
+  url: https://www.agentsea.dev/docs/quick-start/
+- type: GitHubOrganization
+  url: https://github.com/lovekaizen/agentsea
+- type: SourceCode
+  url: https://github.com/lovekaizen/agentsea
+- type: Support
+  url: https://github.com/lovekaizen/agentsea/issues
+- type: ChangeLog
+  url: https://github.com/lovekaizen/agentsea/releases
+- type: License
+  url: https://github.com/lovekaizen/agentsea/blob/main/LICENSE
+- type: Packages
+  url: packages/agentsea-packages.yml
+- type: SDKs
+  url: packages/agentsea-packages.yml
+- type: CLI
+  url: cli/agentsea-cli.yml
+- type: Components
+  url: components/agentsea-components.yml
+- type: LLMsTxt
+  url: llms/agentsea-llms.txt
+- type: Authentication
+  url: authentication/agentsea-authentication.yml
+- type: Conventions
+  url: conventions/agentsea-conventions.yml
+- type: Conformance
+  url: conformance/agentsea-conformance.yml
+- type: Lifecycle
+  url: lifecycle/agentsea-lifecycle.yml
+- type: ChangeLog
+  url: changelog/agentsea-changelog.yml
+- type: Plans
+  url: plans/agentsea-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/agentsea-rate-limits.yml
+x-enrichment:
+  date: '2026-08-24'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1

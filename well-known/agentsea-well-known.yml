@@ -1,0 +1,73 @@
+generated: '2026-08-24'
+method: probed
+source: https://agentsea.dev/.well-known/ and https://www.agentsea.dev/.well-known/
+note: >-
+  Every /.well-known/ path was probed on both the apex and www hosts on 2026-08-24 and every one
+  returned HTTP 404. The site is a Next.js app on Vercel; the 404 body is the app's own styled
+  not-found page, not a soft-200 SPA catch-all, so these are true absences. No WellKnown or
+  SecurityTxt pointer is emitted in apis.yml, because none of these documents is served. AgentSea's
+  only production host is the marketing/docs site - the framework's own HTTP surface is self-hosted
+  by consumers, so there is no vendor-operated API host to probe.
+hosts:
+- host: agentsea.dev
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/mcp.json
+    status: 404
+    file: null
+- host: www.agentsea.dev
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/mcp.json
+    status: 404
+    file: null
+summary:
+  hosts_probed: 2
+  paths_probed: 18
+  documents_found: 0
