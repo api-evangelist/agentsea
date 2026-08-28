@@ -12,6 +12,18 @@ description: >-
   vendor-operated API - its HTTP surface (an /agents REST + Server-Sent Events + WebSocket API via
   the NestJS module, and an OpenAI-compatible /v1/chat/completions LLM gateway) runs inside the
   consumer's own deployment. MIT licensed.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 image: https://agentsea.dev/opengraph-image
 url: https://raw.githubusercontent.com/api-evangelist/agentsea/refs/heads/main/apis.yml
 x-type: company
