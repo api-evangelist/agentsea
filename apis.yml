@@ -50,7 +50,7 @@ tags:
 - Artificial Intelligence
 - AI Agents
 - Agent Orchestration
-- Large Language Models
+- LLM
 - MCP
 - Agentic Commerce
 - Open-Source
@@ -89,6 +89,11 @@ apis:
   - AI Agents
   - Agent Orchestration
   - Server-Sent Events
+  - WebSocket
+  tags_raw:
+  - AI Agents
+  - Agent Orchestration
+  - Server-Sent Events
   - WebSockets
   properties:
   - type: APIReference
@@ -106,6 +111,10 @@ apis:
   humanURL: https://www.agentsea.dev/docs/gateway/
   baseURL: https://{your-agentsea-gateway-host}/v1
   tags:
+  - LLM
+  - Gateways
+  - Routing
+  tags_raw:
   - Large Language Models
   - Gateway
   - Routing
