@@ -13,16 +13,21 @@ description: >-
   the NestJS module, and an OpenAI-compatible /v1/chat/completions LLM gateway) runs inside the
   consumer's own deployment. MIT licensed.
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: open-core
+  license: MIT
+  license_evidence:
+    repo: lovekaizen/agentsea
+    spdx: MIT
+    stars: 22
+  open_source: true
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -53,7 +58,7 @@ tags:
 - LLM
 - MCP
 - Agentic Commerce
-- Open-Source
+- Open Source
 - Developer Tools
 - SDK
 - TypeScript
@@ -73,6 +78,7 @@ tags_raw:
 - TypeScript
 - Elixir
 - Voice
+- Open-Source
 apis:
 - aid: agentsea:agent-rest-api
   name: AgentSea Agent REST API
