@@ -1,0 +1,149 @@
+edges:
+- partner_name: Hex
+  partner: hex-pm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Elixir/Erlang)
+  evidence: https://hex.pm/packages/agentsea_bumblebee
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Hex (public registry JSON)
+    spec_file: null
+    language: Elixir/Erlang
+    packages:
+    - name: agentsea_bumblebee
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_bumblebee
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_core
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_core
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_crews
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_crews
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_embeddings
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_embeddings
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_evaluate
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_evaluate
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_gateway
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_gateway
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_guardrails
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_guardrails
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_ingest
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_ingest
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_providers
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_providers
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_structured
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_structured
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_surf
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_surf
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_voice
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_voice
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    - name: agentsea_web
+      version: 0.1.0
+      released: '2026-06-26'
+      released_field: inserted_at
+      lapsed: false
+      page: https://hex.pm/packages/agentsea_web
+      repo_leg: github-org:lovekaizen
+      publisher_leg: org:lovekaizen
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  detected_by: sweep-php-dart-elixir-package-registries.py
+  first_seen: '2026-10-22'
+generated: '2026-10-22'
+method: searched
+source:
+- https://packagist.org/packages
+- https://pub.dev/api
+- https://hex.pm/api
+checked:
+- https://hex.pm/api
+- https://packagist.org/packages
+- https://pub.dev/api
