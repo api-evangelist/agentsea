@@ -64,5 +64,103 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-AgentSea is a company surfaced via the API Evangelist harvest backlog (source: manual) and added to the network as a stub for full-pipeline profiling.
-- https://agentsea.dev
+AgentSea is an open-source agent development kit (ADK) for building agentic AI applications, authored by Michael Fatoki-Bello and published under the lovekaizen GitHub account. It ships as twenty TypeScript/Node packages on npm under the @lov3kaizen/agentsea-* scope and, separately, as fourteen native Elixir/OTP libraries on Hex (agentsea_*). The framework covers multi-provider LLM access, agent and crew orchestration, sequential/parallel workflows, memory, embeddings, guardrails, evaluation, red-teaming, cost tracking, semantic caching, document ingest, prompt management, browser and computer use, and voice (TTS/STT), plus a Model Context Protocol client and Agentic Commerce Protocol tooling. AgentSea is self-hosted software rather than a vendor-operated API - its HTTP surface (an /agents REST + Server-Sent Events + WebSocket API via the NestJS module, and an OpenAI-compatible /v1/chat/completions LLM gateway) runs inside the consumer's own deployment. MIT licensed.
+
+**Areas:** Company · Artificial Intelligence · AI Agents · Agent Orchestration · LLM · MCP · Agentic Commerce · Open Source · Developer Tools · SDK · TypeScript · Elixir
+
+## AgentSea on APIs.io
+
+Everything profiled for AgentSea is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/agentsea/](https://apis.io/providers/agentsea/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [AgentSea Agent REST API](https://apis.io/apis/agentsea/agent-rest-api/) — HTTP surface exposed by the AgentSea NestJS module (@lov3kaizen/agentsea-nestjs) when enableRestApi/enableWebSocket are set. Documented operations are GET…
+- [AgentSea LLM Gateway](https://apis.io/apis/agentsea/llm-gateway/) — OpenAI-compatible HTTP gateway shipped as @lov3kaizen/agentsea-gateway (and as the Elixir agentsea_web Phoenix app). Run createHTTPServer/startServer and…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Agentsea Authentication](https://apis.io/security/agentsea/agentsea-authentication/)
+- [Agentsea Domain Security](https://apis.io/security/agentsea/agentsea-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Agentsea Plans Pricing](https://apis.io/plans/agentsea/agentsea-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Agentsea Rate Limits](https://apis.io/rate-limits/agentsea/agentsea-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://agentsea.dev)
+- [Documentation](https://www.agentsea.dev/docs/)
+- [Getting started](https://www.agentsea.dev/docs/quick-start/)
+- [API reference](https://www.agentsea.dev/api/)
+- [Support](https://github.com/lovekaizen/agentsea/issues)
+- [Changelog](https://github.com/lovekaizen/agentsea/releases)
+- [GitHub](https://github.com/lovekaizen/agentsea)
+
+## API Evangelist rating
+
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 69.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agentsea/](https://apis.io/providers/agentsea/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AgentSea: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/agentsea/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
